@@ -25,10 +25,10 @@ Stage 1 (Q1) is a classic common-emitter amplifier. The R1/R2 divider sets Q1's 
 This puts the collector sitting near 4–5V — right in the middle of your supply, giving it room to swing both ways. 
 
 ```
-V~e~ = 1.6-0.7 = 0.9 V
+V_e = 1.6-0.7 = 0.9 V
 R_e = 1k => Ie = 0.9 mA
 Beta is 100-300 => Ic~= 0.9mA
-Ic flows through Rc => deltaV over RC = Ic + Rc
+Ic flows through Rc => 	```$\Delta$V``` over RC = Ic + Rc
 = .9mA * 4.7k = 4.23V
 ```
 

@@ -4,7 +4,7 @@ Although simple IC's are available (like the LM386) I want to make it from scrat
 
 Here's what we'll build: a two-stage BJT audio amplifier. The **first stage** is a common-emitter voltage amplifier, the **second** is a complementary push-pull emitter follower to drive the low impedance of headphones (typically 32Ω). No chips, just discrete components.
 
-![design(]images/260607__cb_headphone_amp_schematic.svg)
+![design](images/260607__cb_headphone_amp_schematic.svg)
 
 How it works
 Stage 1 (Q1) is a classic common-emitter amplifier. The R1/R2 divider sets Q1's base at about 1.6V, which puts the collector sitting near 4–5V — right in the middle of your supply, giving it room to swing both ways. RC is the collector load that converts current changes into a voltage signal. RE stabilizes the operating point against temperature drift, and CE shorts RE for AC signals so you get the full voltage gain (around 40–60×) without RE robbing it.

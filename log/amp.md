@@ -18,6 +18,7 @@ Power it from a 9V battery to start — the 2N3904/2N3906 pair are cheap, widely
 Stage 1 (Q1) is a classic common-emitter amplifier. The R1/R2 divider sets Q1's base at about 1.6V.
 
 > 9V/(220k+47k) = Vb/(47k)  ==>  Vb = 47/(220+47) * 9V = 1.58V
+
 ```
 V_e = 1.6-0.7 = 0.9 V
 R_e = 1k => Ie = 0.9 mA

@@ -28,16 +28,14 @@ This puts the collector sitting near 4–5V — right in the middle of your supp
 V_e = 1.6-0.7 = 0.9 V
 R_e = 1k => Ie = 0.9 mA
 Beta is 100-300 => Ic~= 0.9mA
-Ic flows through Rc => 	```$\Delta$V``` over RC = Ic + Rc
+Ic flows through Rc => deltaV over RC = Ic + Rc
 = .9mA * 4.7k = 4.23V
 ```
 
-Therefor Vout of stage 1 is around 9V - 4.23V = 4.77V
+Therefor **V_out** of stage 1 is around 4.77V (9V - 4.23V)
 
+**R_e** stabilizes the operating point against temperature drift and processing variation. **C_e** shorts R_e for AC signals so to get the full voltage gain (around 40–60×) without R_e robbing it.
 
-
-
-RC is the collector load that converts current changes into a voltage signal. RE stabilizes the operating point against temperature drift, and CE shorts RE for AC signals so you get the full voltage gain (around 40–60×) without RE robbing it.
 
 ## Stage 2
 

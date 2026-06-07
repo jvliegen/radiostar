@@ -13,14 +13,23 @@ Here's what we'll build: a two-stage BJT audio amplifier. The **first stage** is
 Power it from a 9V battery to start — the 2N3904/2N3906 pair are cheap, widely available, and forgiving for beginners. You should hear clear audio through the headphones. Once this works, you'll wire the detector/demodulator stage in front of it to complete the receiver.
 
 
-## Stage 1
+## Stage 1: Preamp
 
-Stage 1 (Q1) is a classic common-emitter amplifier. The R1/R2 divider sets Q1's base at about 1.6V, 
+Stage 1 (Q1) is a classic common-emitter amplifier. The R1/R2 divider sets Q1's base at about 1.6V.
 
-> 9V/(220k+47k) = Vb/(47k)
-> Vb = 47/(220+47) * 9V = 1.58V
+> 9V/(220k+47k) = Vb/(47k)  ==>  Vb = 47/(220+47) * 9V = 1.58V
+```
+V_e = 1.6-0.7 = 0.9 V
+R_e = 1k => Ie = 0.9 mA
+Beta is 100-300 => Ic~= 0.9mA
+Ic flows through Rc => deltaV over RC = Ic + Rc
+= .9mA * 4.7k = 4.23V
+```
 
-which puts the collector sitting near 4–5V — right in the middle of your supply, giving it room to swing both ways. 
+Therefor Vout of stage 1 is around 9V - 4.23V = 4.77V
+
+
+This puts the collector sitting near 4–5V — right in the middle of your supply, giving it room to swing both ways. 
 
 
 RC is the collector load that converts current changes into a voltage signal. RE stabilizes the operating point against temperature drift, and CE shorts RE for AC signals so you get the full voltage gain (around 40–60×) without RE robbing it.

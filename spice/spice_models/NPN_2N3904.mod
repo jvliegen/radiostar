@@ -1,3 +1,4 @@
-.MODEL 2N3904 NPN (IS=1e-14 BF=300 VAF=100 IKF=0.1 ISE=1e-14 NE=1.5 
-+ BR=4 NR=1 VAR=24 IKR=0.3 RE=0.1 RB=10 RC=1 CJE=4.5p VJE=0.75 
-+ MJE=0.33 CJC=3.5p VJC=0.75 MJC=0.33 TF=4e-10 TR=1e-8)
+.model 2N3904   NPN(Is=6.734f Xti=3 Eg=1.11 Vaf=74.03 Bf=416.4 Ne=1.259
++               Ise=6.734f Ikf=66.78m Xtb=1.5 Br=.7371 Nc=2 Isc=0 Ikr=0 Rc=1
++               Cjc=3.638p Mjc=.3085 Vjc=.75 Fc=.5 Cje=4.493p Mje=.2593 Vje=.75
++               Tr=239.5n Tf=301.2p Itf=.4 Vtf=4 Xtf=2 Rb=10)

@@ -1,0 +1,1 @@
+.model DEES D (IS=2.52nA)

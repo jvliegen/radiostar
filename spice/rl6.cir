@@ -1,0 +1,34 @@
+.include spice_models/D_1N4148.mod
+
+V1 1 0 DC 0
+
+R1 1 2 100k
+
+D1 2 3 D1N4148
+
+
+* Trying to plot the current through R1 has a quirk
+*   > This is a known ngspice quirk — i(R1) doesn't always work for resistors. 
+* The workaround is to add a 0V voltage source in series with the resistor, 
+* and measure the current through that.
+Vmeas 3 0 DC 0    ; 0V source = short circuit, just measures current
+
+
+
+
+.dc V1 -10 10 0.01      ; Sweep from -2V to +1V in 10mV steps
+
+
+
+
+** Control part
+.control
+run
+
+* plot i(Vmeas)
+plot v(1) v(2), i(Vmeas)
+
+.endc
+
+
+.end

@@ -1,0 +1,67 @@
+* Colpitts oscillator using a BJT
+*   The frequency of oscillations for a Colpitts oscillator is determined by 
+*   the resonant frequency of the LC tank circuit and is given as:
+*   ƒr = 1 / (2π sqrt(L * Ceq))
+*   where Ceq is the equivalent capacitance of C1 and C2 in series.
+*   Ceq = (C1 * C2) / (C1 + C2
+
+
+.include spice_models/NPN_2N3904.mod
+
+* The capacitors and inductor form the tank circuit, which determines the frequency of oscillation.
+*   C1 and C2 which are connected in series and act as a simple voltage divider.
+*   When the power supply is firstly applied, capacitors C1 and C2 charge up and then 
+*   to the base-emitter junction and appear in the amplified at the collector output.
+*   discharge through the coil L1. The oscillations across the capacitors are applied
+C1 1 0 47n
+L1 1 2 1m
+C2 2 0 470n
+
+* C3 acts as a DC-blocking bypass capacitors.
+C3 2 3 1µ
+
+
+
+V1 vcc 0 DC 12
+
+* Resistors, R1 and R2 provide the usual stabilizing DC bias for the transistor 
+R1 vcc 3   8200
+R2 3   0   1500
+
+* Qn C B E NPN_model
+Q1 1 3 5 2N3904
+
+
+* A radio-frequency choke (RFC) is used in the collector circuit to provide a 
+*   high reactance (ideally open circuit) at the frequency of oscillation, (ƒr) 
+*   and a low resistance at DC to help start the oscillations.
+Lrfc vcc 1 200m
+
+
+* The required external phase shift is obtained in a similar manner to that in 
+*   the Hartley oscillator circuit with the required positive feedback obtained 
+*   for sustained undamped oscillations.
+*   The amount of feedback is determined by the ratio of C1 and C2. These two 
+*   capacitances are generally “ganged” together to provide a constant amount 
+*   of feedback so that as one is adjusted the other automatically follows.
+
+Re 5 0 1500
+
+Ce 5 0 1µ
+
+C4 1 out 1µ
+
+* .tran tstep tstop <tstart <tmax>> <uic>
+.tran 1u 10m 9.8m
+
+********************************************************************************
+* Control part
+********************************************************************************
+.control
+run
+plot v(vcc) v(2) v(out)  v(5)
+.endc
+
+.end
+
+* dx (peak-to-peak) = 0.000116071

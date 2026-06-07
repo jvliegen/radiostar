@@ -1,0 +1,25 @@
+.include spice_models/NPN_idealNPN.mod
+.include spice_models/NPN_2N3904.mod
+
+*  C B E
+Q1 2 1 0 2N3904
+
+Vmeas 2 3 DC 0    ; 0V source = short circuit, just measures current
+Rl 3 0 100
+
+
+
+
+Vx 1 9 SIN(-0.000 0.010 10)
+Voffset 9 0 DC 0.750
+.tran 1ms 200ms
+
+
+** Control part
+.control
+run
+plot  v(2)
+.endc
+
+.end
+

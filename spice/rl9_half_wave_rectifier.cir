@@ -1,0 +1,36 @@
+.include spice_models/D_1N4148.mod
+.include spice_models/ees_sine.mod
+
+
+
+
+VmeasD1 1 10 DC 0    ; 0V source = short circuit, just measures current
+D1 10 2 D1N4148
+
+R1 2 0 100k
+
+
+
+
+* For the I-V curve, apply a DC V_in sweep
+* for the Vout-Vin curve, apply a DC V_in sweep
+* V1 1 0 DC 5
+* .dc V1 -4 4 0.01      ; Sweep from -2V to +1V in 10mV steps
+
+* For the time response, apply a sine to V_in
+* This is created by a steady DC voltage to a VCO
+V_ctrl 50 0 DC 0        ; control voltage input to the sine source
+A1 50 1 ees_sine
+.tran 1ms 100ms
+
+
+
+
+
+*** Control part
+.control
+run
+plot v(1) v(2)
+.endc
+
+.end

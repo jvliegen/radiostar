@@ -1,0 +1,20 @@
+
+
+
+
+.include spice_models/ees_sine.mod
+
+V1 1 0 DC 5
+
+V_ctrl 3 0 DC 2.5        ; control voltage input to the sine source
+A1 3 2 ees_sine
+
+.tran 1ms 100ms
+    * .dc V1 -2 2 0.01      ; Sweep from -2V to +1V in 10mV steps
+
+
+.control
+run
+plot v(1) v(3) v(2)
+.endc
+.end

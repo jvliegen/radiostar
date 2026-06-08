@@ -1,0 +1,8 @@
+.MODEL IDEAL_D D
++ IS=6.e-15
++ N=1
++ RS=0
++ CJO=0
++ TT=0
++ BV=1e30
++ IBV=1e-10

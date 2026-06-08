@@ -1,0 +1,13 @@
+.MODEL IDEAL_NPN NPN
++ IS=1e-14
++ BF=100000
++ BR=1
++ VAF=1e30
++ VAR=1e30
++ RB=0
++ RC=0
++ RE=0
++ CJE=0
++ CJC=0
++ TF=0
++ TR=0

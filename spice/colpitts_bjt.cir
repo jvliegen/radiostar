@@ -55,8 +55,8 @@ C4 6 out 1µ
 R0 out 1 0
 
 * .tran tstep tstop <tstart <tmax>> <uic>
-.tran 0.01µ 1m 0.9999m
-* .tran 0.01µ 1m
+* .tran 0.01µ 1m 0.9999m
+.tran 0.01µ 1m
 
 ********************************************************************************
 * Control part

@@ -1,0 +1,53 @@
+.include spice_models/NPN_2N3904.mod
+.include spice_models/PNP_2N3906.mod
+.include spice_models/D_1N4148.mod
+
+V1 vcc gnd DC 9
+V2 vin gnd SIN(0.25 0.25 440)
+
+* DC blocker
+C1 vin 1 1u
+
+* T Biasing
+R1 vcc 1 220k
+R2 1 gnd 47k
+
+* Voltage amplifier stage
+R3 vcc 2 2200
+D1 2 3 D_1N4148
+D2 3 4 D_1N4148
+Q1 4 1 5 2N3904
+R4 5 gnd 220 
+
+* Push-pull output stage
+Q2 vcc 2 6 2N3904
+Q3 gnd 4 6 2N3906
+
+C2 6 vout 470u
+
+********************************************************************************
+* Control part
+********************************************************************************
+.tran 1µ 150m
+
+.control
+run
+
+* ** color0 is the background color
+* set color0 = rgb:ff/ff/ff
+
+* ** color1 is the color of the grid
+* set color1 = rgb:7F/7F/7F
+
+* set color2 = rgb:ff/00/00
+* set color3 = rgb:00/00/00
+* set color4 = rgb:00/ff/00
+* set color5 = rgb:00/00/ff
+
+
+* plot v(vin) v(2) v(4) v(vout)
+plot v(vin) v(vout)
+
+.endc
+
+.end
